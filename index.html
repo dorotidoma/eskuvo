@@ -20,6 +20,13 @@
 
 <body>
 
+    <nav class="nav" aria-label="Fő navigáció">
+      <a href="#kezdolap">Kezdőlap</a>
+      <a href="#reszletek">Részletek</a>
+      <a href="#helyszin">Helyszín</a>
+      <a href="#visszajelzes">Visszajelzés</a>
+    </nav>
+
   <header class="hero" id="kezdolap">
     <svg class="monogram" viewBox="0 0 120 120" role="img" aria-label="D és D monogram">
       <ellipse cx="60" cy="60" rx="43" ry="50" transform="rotate(-8 60 60)" />
@@ -29,7 +36,7 @@
     </svg>
 
     <figure class="frame">
-      <img src="images/nyito.jpg" alt="Kézen fogva sétáló pár" width="900" height="600">
+      <img class="bw" src="images/nyito.jpg" alt="Kézen fogva sétáló pár" width="900" height="600">
     </figure>
 
     <h1 class="names">
@@ -44,12 +51,6 @@
   </header>
 
   <section class="venue-hero" aria-label="A helyszín">
-    <nav class="nav" aria-label="Fő navigáció">
-      <a href="#kezdolap">Kezdőlap</a>
-      <a href="#reszletek">Részletek</a>
-      <a href="#helyszin">Helyszín</a>
-      <a href="#visszajelzes">Visszajelzés</a>
-    </nav>
     <img src="images/helyszin.jpg" alt="Az esküvő helyszíne: kastély a parkkal" width="2200" height="1238">
   </section>
 
@@ -98,7 +99,7 @@
     </section>
 
     <section class="place" id="helyszin">
-      <img src="images/asztal.jpg" alt="Megterített hosszú asztal virágokkal" loading="lazy" width="1400" height="933">
+      <img src="images/asztal.WEBP" alt="Megterített hosszú asztal virágokkal" loading="lazy" width="1400" height="933">
       <div class="place-text">
         <h2 class="section-title">A helyszín</h2>
         <p>Helykitöltő szöveg a helyszínről: néhány mondat arról, miért ezt a helyet választottuk,
@@ -114,8 +115,8 @@
             <dd>Helykitöltő: szobák a helyszínen és a közelben.</dd>
           </div>
         </dl>
-        <a class="button"
-          id="terkep" href="https://www.google.com/maps/search/?api=1&query=Le%20Til%20K%C3%BAria%2C%20F%C5%91%20utca%2094%2C%204235%20Biri"
+        <a class="button" id="terkep"
+          href="https://www.google.com/maps/search/?api=1&query=Le%20Til%20K%C3%BAria%2C%20F%C5%91%20utca%2094%2C%204235%20Biri"
           target="_blank" rel="noopener">Megnyitás térképen</a>
       </div>
     </section>
@@ -149,19 +150,19 @@
       else { szam.textContent = -kul; felirat.textContent = 'napja vagyunk házasok'; }
     })();
   </script>
-<script>
-  (function () {
-    var a = document.getElementById('terkep');
-    if (!a || !/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
-    var q = encodeURIComponent('Le Til Kúria, Fő utca 94, 4235 Biri');
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      var t = setTimeout(function () { location.href = 'https://maps.apple.com/?q=' + q; }, 900);
-      document.addEventListener('visibilitychange', function () { if (document.hidden) clearTimeout(t); });
-      location.href = 'comgooglemaps://?q=' + q;
-    });
-  })();
-</script>
+  <script>
+    (function () {
+      var a = document.getElementById('terkep');
+      if (!a || !/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
+      var q = encodeURIComponent('Le Til Kúria, Fő utca 94, 4235 Biri');
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var t = setTimeout(function () { location.href = 'https://maps.apple.com/?q=' + q; }, 900);
+        document.addEventListener('visibilitychange', function () { if (document.hidden) clearTimeout(t); });
+        location.href = 'comgooglemaps://?q=' + q;
+      });
+    })();
+  </script>
 </body>
 
 </html>
