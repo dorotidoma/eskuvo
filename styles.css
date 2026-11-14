@@ -229,3 +229,15 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
 .contact a { color: inherit; }
 
 .bw { filter: grayscale(100%); }
+
+/* ---------- faq ---------- */
+.faq { position: relative; text-align: center; padding: clamp(6rem, 13vw, 10rem) 1.5rem clamp(4rem, 8vw, 6rem); }
+.faq .script-bg { color: #e3d7d0; }
+.faq-list { max-width: 36rem; margin: clamp(2.5rem, 5vw, 3.5rem) auto 0; text-align: left; }
+.faq details { border-top: 1px solid var(--blush); padding: 1.1rem 0; }
+.faq details:last-child { border-bottom: 1px solid var(--blush); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; font-size: 1.35rem; line-height: 1.4; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--taupe); font-family: var(--sans); font-size: 1rem; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin-top: 0.7rem; color: var(--taupe); font-style: italic; }
