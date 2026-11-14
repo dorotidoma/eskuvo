@@ -197,6 +197,38 @@
       });
     })();
   </script>
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('.faq details').forEach(function (d) {
+        var sum = d.querySelector('summary'), body = d.querySelector('p'), anim = null;
+        d.addEventListener('toggle', function () { d.classList.toggle('is-open', d.open); });
+        sum.addEventListener('click', function (e) {
+          if (reduce || !body.animate) return;
+          e.preventDefault();
+          if (anim) anim.cancel();
+          var opening = !d.open;
+          if (opening) { d.open = true; d.classList.add('is-open'); }
+          else { d.classList.remove('is-open'); }
+          var h = body.offsetHeight + parseFloat(getComputedStyle(body).marginTop);
+          var frames = opening
+            ? [{ height: '0px', opacity: 0 }, { height: h + 'px', opacity: 1 }]
+            : [{ height: h + 'px', opacity: 1 }, { height: '0px', opacity: 0 }];
+          d.style.overflow = 'hidden';
+          anim = body.parentElement.animate(
+            opening
+              ? [{ height: sum.offsetHeight + 'px' }, { height: sum.offsetHeight + h + 'px' }]
+              : [{ height: sum.offsetHeight + h + 'px' }, { height: sum.offsetHeight + 'px' }],
+            { duration: 320, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' });
+          body.animate(frames, { duration: 320, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' });
+          anim.onfinish = anim.oncancel = function () {
+            if (!opening) d.open = false;
+            d.style.overflow = ''; anim = null;
+          };
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>
