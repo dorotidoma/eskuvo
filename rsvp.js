@@ -1,6 +1,6 @@
 (function () {
   // A Google Apps Script "Web app" URL-je (…/exec). Beállítás: rsvp/BEALLITAS.md
-  var RSVP_URL = 'https://script.google.com/macros/s/AKfycbzfI44XAIWMwaXtQxhGxc7x_2yxyCdFzWRMsdY3sRSO1qYF6rc5fyRwY5daEmSxkJqz/exec';
+  var RSVP_URL = 'https://script.google.com/macros/s/AKfycby7jZHKz7nDfWkizsLR_5PB0zLhbm6OZRujQOFIYeaVx5fqMkeTgSr9ehC6uNnIC3Xb/exec';
 
   var form = document.getElementById('rsvp-form');
   if (!form) return;
