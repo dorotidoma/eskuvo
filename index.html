@@ -124,10 +124,52 @@
       <p class="script-bg" aria-hidden="true">Ott leszel?</p>
       <h2 class="section-title">Visszajelzés</h2>
       <p>Kérjük, <strong>2027. április 15-ig</strong> jelezz vissza, hogy számíthatunk-e rád.
-        Helykitöltő szöveg: itt írhatjátok le, hogyan várjátok a válaszokat és az ételérzékenységeket.</p>
-      <a class="button"
-        href="mailto:pelda@email.hu?subject=Visszajelz%C3%A9s%20%E2%80%93%20Doroti%20%C3%A9s%20Doma%20esk%C3%BCv%C5%91je">Visszajelzés
-        küldése</a>
+        Ha meghívódon QR kód van, azzal beolvasva a neveitek már ki lesznek töltve.</p>
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <p class="rsvp-hello" id="rsvp-hello" hidden></p>
+        <div id="rsvp-people"></div>
+
+        <fieldset class="plus" id="rsvp-plus" hidden>
+          <legend class="sr-only">Kísérő</legend>
+          <label class="check"><input type="checkbox" id="rsvp-plus-toggle"><span>Hozok +1 főt</span></label>
+          <div id="rsvp-plus-fields" hidden>
+            <label class="field"><span>Kísérőd neve</span><input name="plus-name"></label>
+            <label class="field"><span>Kísérőd ételallergiája, -érzékenysége</span>
+              <input name="plus-diet" placeholder="ha nincs, hagyd üresen"></label>
+          </div>
+        </fieldset>
+
+        <div id="rsvp-extra" hidden>
+          <fieldset class="question">
+            <legend id="lodging-q">Kértek szállást a helyszínen?</legend>
+            <div class="choice">
+              <label><input type="radio" name="lodging" value="yes"><span>Igen</span></label>
+              <label><input type="radio" name="lodging" value="no"><span>Nem</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="question">
+            <legend id="dog-q">Hoztok kutyát?</legend>
+            <div class="choice">
+              <label><input type="radio" name="dog" value="no"><span>Nem</span></label>
+              <label><input type="radio" name="dog" value="yes"><span>Igen</span></label>
+            </div>
+            <p class="hint">Legfeljebb 10 kg-os kutyát tudunk fogadni, a szálláson 15&nbsp;000&nbsp;Ft/éj felárral.</p>
+          </fieldset>
+        </div>
+
+        <label class="field"><span>Üzenet nekünk</span><textarea name="message" rows="3"></textarea></label>
+        <label class="hp" aria-hidden="true">Weboldal<input name="website" tabindex="-1" autocomplete="off"></label>
+
+        <button class="button" type="submit">Visszajelzés küldése</button>
+        <p class="rsvp-status" id="rsvp-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="rsvp-done" id="rsvp-done" hidden>
+        <p class="rsvp-done-script">Köszönjük!</p>
+        <p id="rsvp-done-text"></p>
+        <button class="link" type="button" id="rsvp-edit">Módosítanám a válaszom</button>
+      </div>
+
       <p class="contact">Kérdés esetén keresd Sipos Rékát: <a
           href="mailto:sipos.reka@weddingforyou.hu">sipos.reka@weddingforyou.hu</a></p>
     </section>
@@ -257,6 +299,7 @@
       });
     })();
   </script>
+  <script src="rsvp.js"></script>
 </body>
 
 </html>
