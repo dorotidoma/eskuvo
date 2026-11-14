@@ -239,7 +239,18 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
 .faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; font-size: 1.35rem; line-height: 1.4; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; color: var(--taupe); font-family: var(--sans); font-size: 1rem; }
-.faq details p { margin-top: 0.7rem; color: var(--taupe); font-style: italic; }
-.faq summary::after { transition: rotate 0.32s cubic-bezier(0.2, 0.7, 0.2, 1); }
-.faq details.is-open summary::after { rotate: 45deg; }
-.faq summary:hover { color: var(--taupe); }
+.faq-a { display: grid; grid-template-rows: 1fr; }
+.faq-a > div { overflow: hidden; }
+.faq-a p { padding-top: 0.7rem; color: var(--taupe); font-style: italic; }
+.faq details.js .faq-a {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+.faq details.js.is-open .faq-a { grid-template-rows: 1fr; opacity: 1; }
+.faq summary::after { transition: rotate 0.38s cubic-bezier(0.4, 0, 0.2, 1); }
+.faq details.is-open summary::after, .faq details:not(.js)[open] summary::after { rotate: 45deg; }
+@media (prefers-reduced-motion: reduce) {
+  .faq details.js .faq-a, .faq summary::after { transition: none; }
+}
+@media (hover: hover) { .faq summary:hover { color: var(--taupe); } }

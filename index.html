@@ -138,32 +138,32 @@
       <div class="faq-list">
       <details>
         <summary>Van dresszkód?</summary>
-        <p>Nincs kötött dresszkód. Egyetlen kérésünk, hogy kerüljétek a fehér és a piros színt.</p>
+        <div class="faq-a"><div><p>Nincs kötött dresszkód. Egyetlen kérésünk, hogy kerüljétek a fehér és a piros színt.</p></div></div>
       </details>
       <details>
         <summary>Van olyan szín, amit kerüljünk?</summary>
-        <p>Igen: a fehéret és a pirosat.</p>
+        <div class="faq-a"><div><p>Igen: a fehéret és a pirosat.</p></div></div>
       </details>
       <details>
         <summary>Hol tudunk parkolni?</summary>
-        <p>A helyszínen.</p>
+        <div class="faq-a"><div><p>A helyszínen.</p></div></div>
       </details>
       <details>
         <summary>Meddig tart az esküvő?</summary>
-        <p>A buli várhatóan hajnal 5-ig tart. Másnap délelőtt reggeli lesz, a wellness használható, a helyszínt 15 óráig kell elhagyni.</p>
+        <div class="faq-a"><div><p>A buli várhatóan hajnal 5-ig tart. Másnap délelőtt reggeli lesz, a wellness használható, a helyszínt 15 óráig kell elhagyni.</p></div></div>
       </details>
       <details>
         <summary>Mit adjunk nászajándékba?</summary>
-        <p>A legnagyobb ajándék, hogy velünk ünnepeltek! Ha mégis megajándékoznátok minket, borítékban a pénznek örülnénk a legjobban. Köszönjük szépen!
-      </p>
+        <div class="faq-a"><div><p>A legnagyobb ajándék, hogy velünk ünnepeltek! Ha mégis megajándékoznátok minket, borítékban a pénznek örülnénk a legjobban. Köszönjük szépen!
+      </p></div></div>
       </details>
       <details>
         <summary>Lehet vinni kutyát?</summary>
-        <p>Igen, de a szállásnál felárat kell fizetni: 15 000 Ft/éj. Legfeljebb 10 kg-os kutyát tudunk fogadni.</p>
+        <div class="faq-a"><div><p>Igen, de a szállásnál felárat kell fizetni: 15 000 Ft/éj. Legfeljebb 10 kg-os kutyát tudunk fogadni.</p></div></div>
       </details>
       <details>
         <summary>Lesz szállás a helyszínen?</summary>
-        <p>Igen, a pontos információkat később közöljük.</p>
+        <div class="faq-a"><div><p>Igen, a pontos információkat később közöljük.</p></div></div>
       </details>
       </div>
     </section>
@@ -200,32 +200,20 @@
   </script>
   <script>
     (function () {
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       document.querySelectorAll('.faq details').forEach(function (d) {
-        var sum = d.querySelector('summary'), body = d.querySelector('p'), anim = null;
-        d.addEventListener('toggle', function () { d.classList.toggle('is-open', d.open); });
+        var sum = d.querySelector('summary'), timer = null;
+        d.classList.add('js');
         sum.addEventListener('click', function (e) {
-          if (reduce || !body.animate) return;
           e.preventDefault();
-          if (anim) anim.cancel();
-          var opening = !d.open;
-          if (opening) { d.open = true; d.classList.add('is-open'); }
-          else { d.classList.remove('is-open'); }
-          var h = body.offsetHeight + parseFloat(getComputedStyle(body).marginTop);
-          var frames = opening
-            ? [{ height: '0px', opacity: 0 }, { height: h + 'px', opacity: 1 }]
-            : [{ height: h + 'px', opacity: 1 }, { height: '0px', opacity: 0 }];
-          d.style.overflow = 'hidden';
-          anim = body.parentElement.animate(
-            opening
-              ? [{ height: sum.offsetHeight + 'px' }, { height: sum.offsetHeight + h + 'px' }]
-              : [{ height: sum.offsetHeight + h + 'px' }, { height: sum.offsetHeight + 'px' }],
-            { duration: 320, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' });
-          body.animate(frames, { duration: 320, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' });
-          anim.onfinish = anim.oncancel = function () {
-            if (!opening) d.open = false;
-            d.style.overflow = ''; anim = null;
-          };
+          clearTimeout(timer);
+          if (!d.classList.contains('is-open')) {
+            d.open = true;
+            void d.offsetHeight;
+            d.classList.add('is-open');
+          } else {
+            d.classList.remove('is-open');
+            timer = setTimeout(function () { d.open = false; }, 400);
+          }
         });
       });
     })();
