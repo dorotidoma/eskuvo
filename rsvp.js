@@ -1,6 +1,6 @@
 (function () {
   // A Google Apps Script "Web app" URL-je (…/exec). Beállítás: rsvp/BEALLITAS.md
-  var RSVP_URL = '';
+  var RSVP_URL = 'https://script.google.com/macros/s/AKfycbzfI44XAIWMwaXtQxhGxc7x_2yxyCdFzWRMsdY3sRSO1qYF6rc5fyRwY5daEmSxkJqz/exec';
 
   var form = document.getElementById('rsvp-form');
   if (!form) return;
@@ -30,11 +30,11 @@
         ? '<legend class="person-name">' + esc(name) + '</legend><input type="hidden" name="name-' + i + '" value="' + esc(name) + '">'
         : '<legend class="sr-only">Résztvevő</legend><label class="field"><span>Neved</span><input name="name-' + i + '" autocomplete="name" required></label>') +
       '<div class="choice" role="radiogroup">' +
-        '<label><input type="radio" name="att-' + i + '" value="yes" required><span>Ott leszek</span></label>' +
-        '<label><input type="radio" name="att-' + i + '" value="no"><span>Sajnos nem tudok jönni</span></label>' +
+      '<label><input type="radio" name="att-' + i + '" value="yes" required><span>Ott leszek</span></label>' +
+      '<label><input type="radio" name="att-' + i + '" value="no"><span>Sajnos nem tudok jönni</span></label>' +
       '</div>' +
       '<label class="field diet" hidden><span>Ételallergia, -érzékenység</span>' +
-        '<input name="diet-' + i + '" placeholder="pl. laktóz, glutén – ha nincs, hagyd üresen"></label>' +
+      '<input name="diet-' + i + '" placeholder="pl. laktóz, glutén – ha nincs, hagyd üresen"></label>' +
       '</fieldset>';
   }
 
@@ -167,7 +167,7 @@
           prefill(res.previous);
         }
       })
-      .catch(function () {})
+      .catch(function () { })
       .then(function () { form.classList.remove('is-loading'); });
   }
 })();

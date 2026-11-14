@@ -1,5 +1,5 @@
 /**
- * Doroti & Doma – RSVP backend (Google Apps Script, a Google Táblázathoz kötve)
+ * RSVP backend (Google Apps Script, a Google Táblázathoz kötve)
  *
  * Lapok:
  *   "Vendégek": Kód | Név 1 | Név 2 | Megjegyzés   (egy sor = egy meghívó; Név 2 üres, ha egyedül hívjuk)
@@ -11,7 +11,7 @@
 const SHEET_GUESTS = 'Vendégek';
 const SHEET_RESP = 'Válaszok';
 const RESP_HEADERS = [
-  'Időpont', 'Kód', 'Meghívó', 'Jön (fő)', 'Ki jön', 'Ki nem jön', '+1 neve',
+  'Időpont', 'Kód', 'Meghívó', 'Jön (fő)', 'Ki jön', 'Ki nem jön', 'plusz egy neve',
   'Ételérzékenység', 'Szállás', 'Kutya', 'Üzenet', 'Nyers adat'
 ];
 const RAW_COL = RESP_HEADERS.length; // utolsó oszlop: nyers JSON (előtöltéshez)

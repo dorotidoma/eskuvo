@@ -22,7 +22,7 @@ A **Vendégek** lapon egy sor = egy meghívó:
 | *(üresen hagyod)* | Szabó Éva | | egyedül → +1-et hozhat |
 
 - Párnál mindkét név, egyedülinél csak a Név 1. A +1 kérdést csak az egyedül meghívottak látják.
-- Ha kész a lista, futtasd a `generateCodes` függvényt: kitölti az üres **Kód** cellákat (pl. `k7m2qxa`).
+- Ha kész a lista, futtasd a `generateCodes` függvényt: kitöltninci az üres **Kód** cellákat (pl. `k7m2qxa`).
   Később felvett vendégeknél csak futtasd újra – a meglévő kódokat nem bántja.
 
 ## 3. Közzététel webalkalmazásként
