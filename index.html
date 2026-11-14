@@ -124,31 +124,30 @@
       <p class="script-bg" aria-hidden="true">Ott leszel?</p>
       <h2 class="section-title">Visszajelzés</h2>
       <p>Kérjük, <strong>2027. április 15-ig</strong> jelezz vissza, hogy számíthatunk-e rád.
-        Ha meghívódon QR kód van, azzal beolvasva a neveitek már ki lesznek töltve.</p>
+        Mindenki a saját nevével töltse ki – pároknál is külön-külön.</p>
       <form class="rsvp-form" id="rsvp-form" novalidate>
-        <p class="rsvp-hello" id="rsvp-hello" hidden></p>
-        <div id="rsvp-people"></div>
+        <label class="field"><span>Neved</span><input name="name" autocomplete="name" required></label>
 
-        <fieldset class="plus" id="rsvp-plus" hidden>
-          <legend class="sr-only">Kísérő</legend>
-          <label class="check"><input type="checkbox" id="rsvp-plus-toggle"><span>Hozok +1 főt</span></label>
-          <div id="rsvp-plus-fields" hidden>
-            <label class="field"><span>Kísérőd neve</span><input name="plus-name"></label>
-            <label class="field"><span>Kísérőd ételallergiája, -érzékenysége</span>
-              <input name="plus-diet" placeholder="ha nincs, hagyd üresen"></label>
+        <fieldset class="question">
+          <legend>Ott leszel?</legend>
+          <div class="choice choice-wide">
+            <label><input type="radio" name="attending" value="yes" required><span>Ott leszek</span></label>
+            <label><input type="radio" name="attending" value="no"><span>Sajnos nem tudok jönni</span></label>
           </div>
+          <label class="field" id="rsvp-diet" hidden><span>Ételallergia, -érzékenység</span>
+            <input name="diet" placeholder="pl. laktóz, glutén – ha nincs, hagyd üresen"></label>
         </fieldset>
 
         <div id="rsvp-extra" hidden>
           <fieldset class="question">
-            <legend id="lodging-q">Kértek szállást a helyszínen?</legend>
+            <legend>Kérsz szállást a helyszínen?</legend>
             <div class="choice">
               <label><input type="radio" name="lodging" value="yes"><span>Igen</span></label>
               <label><input type="radio" name="lodging" value="no"><span>Nem</span></label>
             </div>
           </fieldset>
           <fieldset class="question">
-            <legend id="dog-q">Hoztok kutyát?</legend>
+            <legend>Hozol kutyát?</legend>
             <div class="choice">
               <label><input type="radio" name="dog" value="no"><span>Nem</span></label>
               <label><input type="radio" name="dog" value="yes"><span>Igen</span></label>
@@ -157,7 +156,7 @@
           </fieldset>
         </div>
 
-        <label class="field"><span>Üzenet nekünk</span><textarea name="message" rows="3"></textarea></label>
+        <label class="field field-msg"><span>Üzenet nekünk</span><textarea name="message" rows="3"></textarea></label>
         <label class="hp" aria-hidden="true">Weboldal<input name="website" tabindex="-1" autocomplete="off"></label>
 
         <button class="button" type="submit">Visszajelzés küldése</button>
@@ -167,7 +166,7 @@
       <div class="rsvp-done" id="rsvp-done" hidden>
         <p class="rsvp-done-script">Köszönjük!</p>
         <p id="rsvp-done-text"></p>
-        <button class="link" type="button" id="rsvp-edit">Módosítanám a válaszom</button>
+        <button class="link" type="button" id="rsvp-again">Még valaki kitöltené / módosítanám</button>
       </div>
 
       <p class="contact">Kérdés esetén keresd Sipos Rékát: <a
