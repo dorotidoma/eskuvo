@@ -259,27 +259,6 @@
   </script>
   <script>
     (function () {
-      var a = document.getElementById('terkep');
-      if (!a || !/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
-      var q = encodeURIComponent('Le Til Kúria, Fő utca 94, 4235 Biri');
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        var start = Date.now(), left = false;
-        function gone() { left = true; clearTimeout(t); }
-        document.addEventListener('visibilitychange', function () { if (document.hidden) gone(); }, { once: true });
-        window.addEventListener('pagehide', gone, { once: true });
-        window.addEventListener('blur', gone, { once: true });
-        var t = setTimeout(function () {
-          // ha az app megnyílt, az időzítő a háttérben megállt -> visszatéréskor késve fut le: ilyenkor ne irányítsunk át
-          if (left || document.hidden || Date.now() - start > 1500) return;
-          location.href = 'https://maps.apple.com/?q=' + q;
-        }, 1000);
-        location.href = 'comgooglemaps://?q=' + q;
-      });
-    })();
-  </script>
-  <script>
-    (function () {
       document.querySelectorAll('.faq details').forEach(function (d) {
         var sum = d.querySelector('summary'), timer = null;
         d.classList.add('js');
