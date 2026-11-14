@@ -332,3 +332,11 @@ a:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
 @media (max-width: 360px) {
   .map-links .button { white-space: normal; min-width: 0; }
 }
+
+/* Képek ne legyenek kijelölhetők / húzhatók */
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
