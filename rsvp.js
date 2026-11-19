@@ -49,7 +49,6 @@
     check(att !== null, form.querySelector('input[name="attending"]').closest('.choice'), 'Kérjük, jelöld, hogy ott leszel-e.');
     if (att === true) {
       check(radio('lodging') !== null, form.querySelector('input[name="lodging"]').closest('.choice'), 'Kérjük, válassz.');
-      check(radio('dog') !== null, form.querySelector('input[name="dog"]').closest('.choice'), 'Kérjük, válassz.');
     }
     if (first) {
       first.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -76,7 +75,6 @@
       attending: attending,
       diet: attending ? form.elements.diet.value.trim() : '',
       lodging: attending ? radio('lodging') : null,
-      dog: attending ? radio('dog') : null,
       message: form.elements.message.value.trim(),
       website: form.elements.website.value
     };
